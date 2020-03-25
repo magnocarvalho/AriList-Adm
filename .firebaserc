@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "arilist": {
+      "hosting": {
+        "adm-list": [
+          "arilist"
+        ]
+      }
+    }
+  }
+}
