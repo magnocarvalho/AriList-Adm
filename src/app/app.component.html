@@ -3,10 +3,10 @@
     <span>LEADS</span>
   </mat-toolbar-row>
 </mat-toolbar>
-<div>
-  <li class="text" *ngFor="let item of items | async">
+<div style="padding: 20px;">
+  <!-- <li class="text" *ngFor="let item of items | async">
     {{ item | json }}
-  </li>
+  </li> -->
   <table mat-table [dataSource]="items" class="mat-elevation-z8">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->

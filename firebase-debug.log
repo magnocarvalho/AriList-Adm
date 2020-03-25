@@ -1,0 +1,134 @@
+[debug] [2020-03-25T04:49:53.745Z] ----------------------------------------------------------------------
+[debug] [2020-03-25T04:49:53.748Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\magno\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2020-03-25T04:49:53.748Z] CLI Version:   7.11.0
+[debug] [2020-03-25T04:49:53.748Z] Platform:      win32
+[debug] [2020-03-25T04:49:53.748Z] Node Version:  v12.14.1
+[debug] [2020-03-25T04:49:53.750Z] Time:          Wed Mar 25 2020 01:49:53 GMT-0300 (GMT-03:00)
+[debug] [2020-03-25T04:49:53.751Z] ----------------------------------------------------------------------
+[debug] [2020-03-25T04:49:53.751Z] 
+[debug] [2020-03-25T04:49:53.760Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-03-25T04:49:53.761Z] > authorizing via signed-in user
+[debug] [2020-03-25T04:49:53.761Z] [iam] checking project arilist for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2020-03-25T04:49:53.763Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/arilist:testIamPermissions  
+
+[debug] [2020-03-25T04:49:55.262Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:49:55.265Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/arilist  
+ 
+[debug] [2020-03-25T04:49:56.502Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'arilist'...
+[info] 
+[info] i  deploying database, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] +  functions: Finished running predeploy script.
+[info] i  database: checking rules syntax...
+[debug] [2020-03-25T04:50:19.400Z] >>> HTTP REQUEST PUT https://arilist.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
+[debug] [2020-03-25T04:50:20.285Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database arilist is valid
+[debug] [2020-03-25T04:50:20.291Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.3.0"
+  },
+  "devDependencies": {
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2",
+    "firebase-functions-test": "^0.1.6"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2020-03-25T04:50:20.293Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/arilist/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2020-03-25T04:50:20.294Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/arilist/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2020-03-25T04:50:21.450Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:50:21.497Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2020-03-25T04:50:21.500Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/arilist/adminSdkConfig  
+ 
+[debug] [2020-03-25T04:50:22.669Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:50:22.670Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/arilist/versions  
+
+[debug] [2020-03-25T04:50:25.354Z] <<< HTTP RESPONSE 200
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2020-03-25T04:50:25.358Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/arilist/configs  
+ 
+[debug] [2020-03-25T04:50:26.622Z] <<< HTTP RESPONSE 200
+[info] i  functions: packaged functions (33.48 KB) for uploading
+[debug] [2020-03-25T04:50:26.869Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/arilist/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2020-03-25T04:50:34.424Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:50:34.424Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-f638cd82-fd20-434b-b96a-195e36f580a6/0990d782-d968-4465-b39d-6a8db16928b2.zip?GoogleAccessId=service-171590076680@gcf-admin-robot.iam.gserviceaccount.com&Expires=1585113634&Signature=T9isnGnRRBufQ6ZNpqsAc0A5fDZtwM2KrKBUXUO4LF0tp16UygligwhfXbHy6iEVbIlevuPfiDLnlu5Qtl7zWiEfbDvxxYGXJ0Mz4fvdbxxGxQFx1%2BRX4n88VAA6NaE2BItBVCzj%2FyEMBTW4LiaPPLfrT4MWzVm%2Fplg9cLBiiTa%2FjC3%2BGXE4IrrNp45Lgl88o%2Bb0%2FQmZtpdgtZXftzBynp0eFQm7t6o%2Bn8sRVU0nD5rxXowVJRtb%2BvInX1YbEbuPSXsKSTbK%2BAwe4phjC2fFcqylljBeU0W%2Fa2IVwfPGNCW1EDVRLGlAxMfMGXh5JtMWueawd5Y4TeQUBIK8nzgy6w%3D%3D  
+ <request body omitted>
+[debug] [2020-03-25T04:50:35.117Z] <<< HTTP RESPONSE 200
+[info] +  functions: functions folder uploaded successfully
+[info] i  hosting[arilist]: beginning deploy...
+[info] i  hosting[arilist]: found 16 files in dist
+[debug] [2020-03-25T04:50:35.134Z] [hosting] hash cache [ZGlzdA] not populated
+[debug] [2020-03-25T04:50:35.237Z] [hosting] hash cache [ZGlzdA] stored for 16 files
+[debug] [2020-03-25T04:50:35.237Z] [hosting][hash queue][FINAL]
+[debug] [2020-03-25T04:50:35.237Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/arilist/versions/86dd634e8cc77bed:populateFiles  
+ <request body omitted>
+[debug] [2020-03-25T04:50:36.690Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:50:36.702Z] [hosting][populate queue][FINAL]
+[debug] [2020-03-25T04:50:36.702Z] [hosting] uploads queued: 15
+[debug] [2020-03-25T04:50:41.182Z] [hosting][upload queue][FINAL]
+[info] +  hosting[arilist]: file upload complete
+[debug] [2020-03-25T04:50:41.184Z] [hosting] deploy completed after 6062ms
+[info] i  database: releasing rules...
+[debug] [2020-03-25T04:50:41.397Z] >>> HTTP REQUEST PUT https://arilist.firebaseio.com/.settings/rules.json  
+ {
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
+[debug] [2020-03-25T04:50:42.119Z] <<< HTTP RESPONSE 200
+[info] +  database: rules for database arilist released successfully
+[debug] [2020-03-25T04:50:42.125Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/arilist/locations/-/functions  
+ 
+[debug] [2020-03-25T04:50:43.566Z] <<< HTTP RESPONSE 200
+[info] i  functions: creating Node.js 8 function helloWorld(us-central1)...
+[debug] [2020-03-25T04:50:43.570Z] Trigger is:  {"httpsTrigger":{}}
+[debug] [2020-03-25T04:50:43.571Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/arilist/services/cloudscheduler.googleapis.com  
+ 
+[debug] [2020-03-25T04:50:44.827Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:50:44.829Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/arilist/locations/us-central1/functions  
+
+[debug] [2020-03-25T04:50:46.412Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:50:46.413Z] Setting public policy for function helloWorld
+[debug] [2020-03-25T04:50:46.413Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/arilist/locations/us-central1/functions/helloWorld:setIamPolicy  
+
+[debug] [2020-03-25T04:50:47.885Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:50:47.886Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/arilist/locations/-/functions  
+ 
+[debug] [2020-03-25T04:50:49.233Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:50:49.235Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/YXJpbGlzdC91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2tUblNCME13OGcw  
+ 
+[debug] [2020-03-25T04:50:49.615Z] <<< HTTP RESPONSE 200
+[debug] [2020-03-25T04:50:51.627Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/YXJpbGlzdC91cy1jZW50cmFsMS9oZWxsb1dvcmxkL2tUblNCME13OGcw  
+ 
